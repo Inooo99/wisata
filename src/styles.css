@@ -1413,6 +1413,44 @@ small {
   font-size: 15px;
 }
 
+/* VIDEO EMBED DOKUMENTASI */
+.video-section {
+  margin-top: 55px;
+}
+
+.video-section h2 {
+  margin-bottom: 20px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(24, 59, 91, 0.12);
+}
+
+.video-player-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-credit {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
 .location-section {
   margin-top: 65px;
 }

@@ -936,6 +936,14 @@ function Contact() {
   );
 }
 
+/* HELPER YOUTUBE ID */
+function getYouTubeId(url) {
+  if (!url) return null;
+  const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+  const match = url.match(regExp);
+  return match ? match[1] : (url.length === 11 ? url : null);
+}
+
 /* DETAIL DESTINASI */
 
 function Detail() {
@@ -996,6 +1004,26 @@ function Detail() {
               </div>
             </div>
           </div>
+
+          {item.youtube && (
+            <section className="video-section">
+              <span className="eyebrow">DOKUMENTASI VIDEO</span>
+              <h2>Suasana {item.name}</h2>
+              <div className="video-player-wrapper">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(item.youtube)}?rel=0`}
+                  title={`Video Dokumentasi ${item.name}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="video-credit">
+                <small>
+                  Ditayangkan langsung melalui YouTube Player &bull; Hak cipta sepenuhnya milik kreator video
+                </small>
+              </div>
+            </section>
+          )}
 
           <section className="location-section">
             <span className="eyebrow">LOKASI</span>
