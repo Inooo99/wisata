@@ -288,7 +288,7 @@ function SearchForm() {
       <form className="hero-search" onSubmit={handleSubmit}>
         <Search size={20} />
         <input
-          type="search"
+          type="text"
           value={keyword}
           onChange={(event) => {
             setKeyword(event.target.value);
@@ -297,8 +297,9 @@ function SearchForm() {
           onFocus={() => {
             if (keyword.trim()) setIsOpen(true);
           }}
-          placeholder="Cari destinasi wisata (contoh: pantai)..."
+          placeholder="Cari destinasi wisata (contoh: pantai, selong)..."
           autoComplete="off"
+          spellCheck={false}
         />
         {keyword && (
           <button
@@ -528,15 +529,17 @@ function Home() {
   return (
     <main>
       <section className="hero">
-        {heroImages.map((image, index) => (
-          <div
-            key={image}
-            className={`hero-slide ${activeSlide === index ? "active" : ""}`}
-            style={{ backgroundImage: `url("${image}")` }}
-          />
-        ))}
+        <div className="hero-bg-wrapper">
+          {heroImages.map((image, index) => (
+            <div
+              key={image}
+              className={`hero-slide ${activeSlide === index ? "active" : ""}`}
+              style={{ backgroundImage: `url("${image}")` }}
+            />
+          ))}
 
-        <div className="hero-overlay" />
+          <div className="hero-overlay" />
+        </div>
 
         <div className="hero-content">
           <span className="hero-kicker">
@@ -1175,32 +1178,32 @@ function Detail() {
 
   return (
     <main className="detail-page">
+      {/* NAVIGASI MELAYANG (FLOATING & STICKY TETAP ADA SAAT SCROLL) */}
+      <div className="detail-floating-bar">
+        <button
+          type="button"
+          className="cover-nav-btn"
+          onClick={handleGoBack}
+          aria-label="Kembali ke halaman sebelumnya"
+        >
+          <ArrowLeft size={15} />
+          <span>Kembali</span>
+        </button>
+
+        <Link to="/" className="cover-nav-btn" aria-label="Kembali ke Beranda">
+          <HomeIcon size={15} />
+          <span>Beranda</span>
+        </Link>
+
+        <Link to="/destinasi" className="cover-nav-btn" aria-label="Lihat Semua Destinasi">
+          <Compass size={15} />
+          <span>Semua Destinasi</span>
+        </Link>
+      </div>
+
       <div className="detail-cover">
         <img src={item.image} alt={item.name} />
         <div className="detail-cover-overlay" />
-
-        {/* NAVIGASI ATAS PADA COVER */}
-        <div className="detail-cover-nav">
-          <button
-            type="button"
-            className="cover-nav-btn"
-            onClick={handleGoBack}
-            aria-label="Kembali ke halaman sebelumnya"
-          >
-            <ArrowLeft size={15} />
-            <span>Kembali</span>
-          </button>
-
-          <Link to="/" className="cover-nav-btn" aria-label="Kembali ke Beranda">
-            <HomeIcon size={15} />
-            <span>Beranda</span>
-          </Link>
-
-          <Link to="/destinasi" className="cover-nav-btn" aria-label="Lihat Semua Destinasi">
-            <Compass size={15} />
-            <span>Semua Destinasi</span>
-          </Link>
-        </div>
 
         <div className="detail-cover-content">
           <span>{getCategoryName(item.category)}</span>
@@ -1338,34 +1341,6 @@ function Detail() {
               </Link>
             </div>
           </section>
-
-          {/* TOMBOL AKSI NAVIGASI BAWAH */}
-          <div className="detail-bottom-actions">
-            <button
-              type="button"
-              className="action-btn"
-              onClick={handleGoBack}
-            >
-              <ArrowLeft size={16} /> Kembali
-            </button>
-
-            <Link to="/" className="action-btn action-btn-primary">
-              <HomeIcon size={16} /> Kembali ke Beranda
-            </Link>
-
-            <Link to="/destinasi" className="action-btn">
-              <Compass size={16} /> Semua Destinasi
-            </Link>
-
-            <button
-              type="button"
-              className="action-btn"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              title="Gulir kembali ke atas"
-            >
-              <ChevronUp size={16} /> Ke Atas
-            </button>
-          </div>
         </section>
       </div>
     </main>
