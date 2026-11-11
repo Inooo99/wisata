@@ -26,6 +26,10 @@ import {
   ShieldCheck,
   Globe,
   Send,
+  ArrowLeft,
+  ArrowRight,
+  Home as HomeIcon,
+  ChevronUp,
 } from "lucide-react";
 
 import {
@@ -45,29 +49,44 @@ const heroImages = [
 
 const categorySlides = {
   pantai: [
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=2000",
-    "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=2000",
-    "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=2000",
+    destinations.find((d) => d.id === "pantai-kuta-mandalika")?.image ||
+      "https://zjglidcehtsqqqhbdxyp.supabase.co/storage/v1/object/public/atourin/images/destination/lombok/pantai-kuta-mandalika-profile1645517036.png?x-image-process=image/resize,p_100,limit_1/imageslim",
+    destinations.find((d) => d.id === "tanjung-aan")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh88M18Ni626kbwExSMLUYILGBlvPgbtxeZfWiNL_C1JbalzQgsraEZbPo&s=10",
+    destinations.find((d) => d.id === "pantai-pink")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5GfX9EFipsWfITpm6zkHtD9c10rAnwVSpnpib18Yvk_8D-cj94ILGVkM&s=10",
   ],
   "bukit-pegunungan": [
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2000",
-    "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=2000",
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2000",
+    destinations.find((d) => d.id === "gunung-rinjani")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTye_JMmI7uasWOIi0u7xqDSQjWxBf_kMhZTtXBpmzHyQ&s=10",
+    destinations.find((d) => d.id === "bukit-merese")?.image ||
+      "https://images.unsplash.com/photo-1595740802643-4cc5beb11b00?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    destinations.find((d) => d.id === "sembalun")?.image ||
+      "https://thumb.viva.id/vivabali/665x374/2025/08/31/68b3d5214b2e5-taman-surga-rinjani-sembalun-lombok-timur_bali.jpg",
   ],
   "air-terjun": [
-    "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=2000",
-    "https://images.unsplash.com/photo-1511497584788-876760111969?w=2000",
-    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=2000",
+    destinations.find((d) => d.id === "benang-kelambu")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi_8RteGv8TGjXLBwWnl04NcCu7pQUABPUCI_OpiH89Q&s=10",
+    destinations.find((d) => d.id === "sendang-gile")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjOPBAC0Nb6yNdtKPt6q_v2ZCg7PXwwBuWTYrTVmNkDg&s=10",
+    destinations.find((d) => d.id === "tiu-kelep")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaVXlpPXILVNMke0eLfS6n1PnVidNZEv6sKPDkvQ3FA&s=10",
   ],
   "budaya-religi": [
-    "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=2000",
-    "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=2000",
-    "https://images.unsplash.com/photo-1604999333679-b86d54738315?w=2000",
+    destinations.find((d) => d.id === "desa-adat-sade")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-QaciKjPZG5psv9guvp1ACkARlrRFHX6vZwFsU0dIw&s=10",
+    destinations.find((d) => d.id === "pura-lingsar")?.image ||
+      "https://cdn-jpr.jawapos.com/images/41/2024/07/26/Pura-Lingsar-Lombok-Gambar-dari-Rostasedlacek-Shutterstock-2487271013.png",
+    destinations.find((d) => d.id === "islamic-center-mataram")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREXVGir9qe9_h2Ey7MsZ9Yg6qpedQYHfe_iKoELFqaNw&s=10",
   ],
   all: [
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=2000",
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2000",
-    "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=2000",
+    destinations.find((d) => d.id === "tanjung-aan")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh88M18Ni626kbwExSMLUYILGBlvPgbtxeZfWiNL_C1JbalzQgsraEZbPo&s=10",
+    destinations.find((d) => d.id === "gunung-rinjani")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTye_JMmI7uasWOIi0u7xqDSQjWxBf_kMhZTtXBpmzHyQ&s=10",
+    destinations.find((d) => d.id === "tiu-kelep")?.image ||
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaVXlpPXILVNMke0eLfS6n1PnVidNZEv6sKPDkvQ3FA&s=10",
   ],
 };
 
@@ -226,24 +245,145 @@ function Navbar() {
 
 function SearchForm() {
   const [keyword, setKeyword] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const query = keyword.trim().toLowerCase();
+  const results = query
+    ? destinations.filter((item) => {
+        const nameMatch = item.name.toLowerCase().includes(query);
+        const catMatch =
+          item.category.toLowerCase().includes(query) ||
+          getCategoryName(item.category).toLowerCase().includes(query);
+        const locMatch = item.location.toLowerCase().includes(query);
+        const islandMatch = item.island?.toLowerCase().includes(query);
+        return nameMatch || catMatch || locMatch || islandMatch;
+      })
+    : [];
 
   function handleSubmit(event) {
     event.preventDefault();
+    setIsOpen(false);
     navigate(`/destinasi?search=${encodeURIComponent(keyword.trim())}`);
   }
 
+  function handleSelect(id) {
+    setIsOpen(false);
+    navigate(`/wisata/${id}`);
+  }
+
   return (
-    <form className="hero-search" onSubmit={handleSubmit}>
-      <Search size={20} />
-      <input
-        type="search"
-        value={keyword}
-        onChange={(event) => setKeyword(event.target.value)}
-        placeholder="Cari destinasi wisata..."
-      />
-      <button type="submit">Cari Destinasi</button>
-    </form>
+    <div className="hero-search-wrapper" ref={wrapperRef}>
+      <form className="hero-search" onSubmit={handleSubmit}>
+        <Search size={20} />
+        <input
+          type="search"
+          value={keyword}
+          onChange={(event) => {
+            setKeyword(event.target.value);
+            setIsOpen(true);
+          }}
+          onFocus={() => {
+            if (keyword.trim()) setIsOpen(true);
+          }}
+          placeholder="Cari destinasi wisata (contoh: pantai)..."
+          autoComplete="off"
+        />
+        {keyword && (
+          <button
+            type="button"
+            className="search-clear-btn"
+            onClick={() => {
+              setKeyword("");
+              setIsOpen(false);
+            }}
+            aria-label="Hapus kata kunci"
+          >
+            <X size={16} />
+          </button>
+        )}
+        <button type="submit">Cari Destinasi</button>
+      </form>
+
+      {isOpen && query && (
+        <div className="search-dropdown">
+          <div className="search-dropdown-header">
+            <span>
+              Destinasi Ditemukan (<strong>{results.length}</strong>)
+            </span>
+            <button
+              type="button"
+              className="search-close-link"
+              onClick={() => setIsOpen(false)}
+            >
+              Tutup
+            </button>
+          </div>
+
+          {results.length > 0 ? (
+            <>
+              <div className="search-dropdown-list">
+                {results.map((item) => (
+                  <div
+                    key={item.id}
+                    className="search-result-item"
+                    onClick={() => handleSelect(item.id)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="search-result-thumb"
+                      loading="lazy"
+                    />
+                    <div className="search-result-info">
+                      <span className="search-result-title">{item.name}</span>
+                      <div className="search-result-meta">
+                        <span className="search-result-cat">
+                          {getCategoryName(item.category)}
+                        </span>
+                        <span className="search-result-loc">
+                          <MapPin size={11} /> {item.location}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                className="search-dropdown-footer"
+                onClick={handleSubmit}
+                role="button"
+                tabIndex={0}
+              >
+                <span>Lihat semua {results.length} hasil di katalog</span>
+                <ArrowRight size={14} />
+              </div>
+            </>
+          ) : (
+            <div className="search-dropdown-empty">
+              <p>
+                Tidak ada destinasi dengan kata kunci "<strong>{keyword}</strong>"
+              </p>
+              <small>Coba ketik nama pantai, bukit, air terjun, atau nama desa.</small>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -372,6 +512,11 @@ function Footer() {
 function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
 
+  // 4 destinasi rekomendasi: 1 dari setiap kategori (Pantai, Bukit & Pegunungan, Air Terjun, Budaya & Religi)
+  const featuredDestinations = categories
+    .map((category) => destinations.find((d) => d.category === category.id))
+    .filter(Boolean);
+
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveSlide((current) => (current + 1) % heroImages.length);
@@ -474,7 +619,7 @@ function Home() {
         </div>
 
         <div className="destination-grid">
-          {destinations.slice(0, 4).map((item) => (
+          {featuredDestinations.map((item) => (
             <DestinationCard item={item} key={item.id} />
           ))}
         </div>
@@ -548,6 +693,13 @@ function Profile() {
       </section>
 
       <section className="profile-content section-wrap">
+        <div className="page-back-bar">
+          <Link to="/" className="back-link">
+            <ArrowLeft size={15} />
+            <span>Kembali ke Beranda</span>
+          </Link>
+        </div>
+
         <div className="profile-intro">
           <div className="profile-symbol">J.</div>
 
@@ -619,6 +771,13 @@ function CategoryIndex() {
       </section>
 
       <section className="category-page-content section-wrap">
+        <div className="page-back-bar">
+          <Link to="/" className="back-link">
+            <ArrowLeft size={15} />
+            <span>Kembali ke Beranda</span>
+          </Link>
+        </div>
+
         {categories.map((category) => {
           const items = destinations.filter(
             (item) => item.category === category.id
@@ -748,6 +907,24 @@ function Listing({ categoryOnly = false }) {
       </section>
 
       <section className="listing-content">
+        <div className="listing-nav-bar">
+          <Link to="/" className="back-link">
+            <ArrowLeft size={15} />
+            <span>Kembali ke Beranda</span>
+          </Link>
+          {categoryOnly ? (
+            <Link to="/kategori" className="back-link">
+              <Compass size={15} />
+              <span>Semua Kategori</span>
+            </Link>
+          ) : (
+            <Link to="/kategori" className="back-link">
+              <Compass size={15} />
+              <span>Kategori Wisata</span>
+            </Link>
+          )}
+        </div>
+
         <div className="listing-tools">
           <div className="search-box">
             <Search size={18} />
@@ -832,6 +1009,13 @@ function Contact() {
       </section>
 
       <section className="contact-content section-wrap">
+        <div className="page-back-bar">
+          <Link to="/" className="back-link">
+            <ArrowLeft size={15} />
+            <span>Kembali ke Beranda</span>
+          </Link>
+        </div>
+
         <div className="contact-heading">
           <span className="eyebrow">KAMI SIAP MEMBANTU</span>
           <h2>Terhubung dengan kami.</h2>
@@ -952,6 +1136,7 @@ function getYouTubeId(input) {
 
 function Detail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const item = destinations.find((destination) => destination.id === id);
 
   if (!item) {
@@ -963,6 +1148,16 @@ function Detail() {
     );
   }
 
+  const currentIndex = destinations.findIndex((destination) => destination.id === id);
+  const prevItem =
+    currentIndex > 0
+      ? destinations[currentIndex - 1]
+      : destinations[destinations.length - 1];
+  const nextItem =
+    currentIndex < destinations.length - 1
+      ? destinations[currentIndex + 1]
+      : destinations[0];
+
   const mapsQuery = `${item.name}, ${item.location}`;
   const mapsUrl =
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
@@ -970,11 +1165,42 @@ function Detail() {
   const embedUrl =
     `https://maps.google.com/maps?q=${encodeURIComponent(mapsQuery)}&output=embed`;
 
+  function handleGoBack() {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate("/destinasi");
+    }
+  }
+
   return (
     <main className="detail-page">
       <div className="detail-cover">
         <img src={item.image} alt={item.name} />
         <div className="detail-cover-overlay" />
+
+        {/* NAVIGASI ATAS PADA COVER */}
+        <div className="detail-cover-nav">
+          <button
+            type="button"
+            className="cover-nav-btn"
+            onClick={handleGoBack}
+            aria-label="Kembali ke halaman sebelumnya"
+          >
+            <ArrowLeft size={15} />
+            <span>Kembali</span>
+          </button>
+
+          <Link to="/" className="cover-nav-btn" aria-label="Kembali ke Beranda">
+            <HomeIcon size={15} />
+            <span>Beranda</span>
+          </Link>
+
+          <Link to="/destinasi" className="cover-nav-btn" aria-label="Lihat Semua Destinasi">
+            <Compass size={15} />
+            <span>Semua Destinasi</span>
+          </Link>
+        </div>
 
         <div className="detail-cover-content">
           <span>{getCategoryName(item.category)}</span>
@@ -984,6 +1210,24 @@ function Detail() {
       </div>
 
       <div className="detail-container">
+        {/* BREADCRUMB / JALUR NAVIGASI */}
+        <nav className="detail-breadcrumbs" aria-label="Navigasi remah roti">
+          <Link to="/" className="breadcrumb-link">
+            <HomeIcon size={13} />
+            <span>Beranda</span>
+          </Link>
+          <span className="breadcrumb-sep">/</span>
+          <Link to="/destinasi" className="breadcrumb-link">
+            Destinasi
+          </Link>
+          <span className="breadcrumb-sep">/</span>
+          <Link to={`/kategori/${item.category}`} className="breadcrumb-link">
+            {getCategoryName(item.category)}
+          </Link>
+          <span className="breadcrumb-sep">/</span>
+          <span className="breadcrumb-current">{item.name}</span>
+        </nav>
+
         <section className="detail-main">
           <div className="detail-description">
             <span className="eyebrow">TENTANG DESTINASI</span>
@@ -1057,9 +1301,128 @@ function Detail() {
               </div>
             </a>
           </section>
+
+          {/* BOLAK-BALIK DESTINASI (SEBELUMNYA & BERIKUTNYA) */}
+          <section className="dest-pagination-section">
+            <span className="eyebrow">JELAJAHI DESTINASI LAINNYA</span>
+            <h2>Destinasi Lainnya di NTB</h2>
+            <div className="dest-pagination-grid">
+              <Link
+                to={`/wisata/${prevItem.id}`}
+                className="dest-pagination-card prev-card"
+                aria-label={`Destinasi Sebelumnya: ${prevItem.name}`}
+              >
+                <div className="dest-pagination-icon">
+                  <ArrowLeft size={20} />
+                </div>
+                <div className="dest-pagination-info">
+                  <span className="dest-pagination-badge">Destinasi Sebelumnya</span>
+                  <strong>{prevItem.name}</strong>
+                  <small><MapPin size={12} /> {prevItem.location}</small>
+                </div>
+              </Link>
+
+              <Link
+                to={`/wisata/${nextItem.id}`}
+                className="dest-pagination-card next-card"
+                aria-label={`Destinasi Berikutnya: ${nextItem.name}`}
+              >
+                <div className="dest-pagination-info">
+                  <span className="dest-pagination-badge">Destinasi Berikutnya</span>
+                  <strong>{nextItem.name}</strong>
+                  <small><MapPin size={12} /> {nextItem.location}</small>
+                </div>
+                <div className="dest-pagination-icon">
+                  <ArrowRight size={20} />
+                </div>
+              </Link>
+            </div>
+          </section>
+
+          {/* TOMBOL AKSI NAVIGASI BAWAH */}
+          <div className="detail-bottom-actions">
+            <button
+              type="button"
+              className="action-btn"
+              onClick={handleGoBack}
+            >
+              <ArrowLeft size={16} /> Kembali
+            </button>
+
+            <Link to="/" className="action-btn action-btn-primary">
+              <HomeIcon size={16} /> Kembali ke Beranda
+            </Link>
+
+            <Link to="/destinasi" className="action-btn">
+              <Compass size={16} /> Semua Destinasi
+            </Link>
+
+            <button
+              type="button"
+              className="action-btn"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              title="Gulir kembali ke atas"
+            >
+              <ChevronUp size={16} /> Ke Atas
+            </button>
+          </div>
         </section>
       </div>
     </main>
+  );
+}
+
+/* SCROLL TO TOP OTOMATIS SAAT PINDAH HALAMAN */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+/* FLOATING NAV (KEMBALI KE BERANDA & SCROLL TO TOP) */
+function FloatingNav() {
+  const [show, setShow] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const checkScroll = () => {
+      setShow(window.scrollY > 280);
+    };
+    window.addEventListener("scroll", checkScroll, { passive: true });
+    checkScroll();
+    return () => window.removeEventListener("scroll", checkScroll);
+  }, []);
+
+  if (!show) return null;
+
+  return (
+    <div className="floating-nav" aria-label="Navigasi Cepat">
+      {location.pathname !== "/" && (
+        <Link
+          to="/"
+          className="floating-nav-btn"
+          aria-label="Kembali ke Beranda"
+          title="Kembali ke Beranda"
+        >
+          <HomeIcon size={18} />
+          <span className="floating-tooltip">Beranda</span>
+        </Link>
+      )}
+      <button
+        type="button"
+        className="floating-nav-btn"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Kembali ke atas"
+        title="Kembali ke atas"
+      >
+        <ChevronUp size={20} />
+        <span className="floating-tooltip">Ke Atas</span>
+      </button>
+    </div>
   );
 }
 
@@ -1068,6 +1431,7 @@ function Detail() {
 function AppContent() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
 
       <Routes>
@@ -1082,6 +1446,7 @@ function AppContent() {
       </Routes>
 
       <Footer />
+      <FloatingNav />
     </>
   );
 }
