@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -250,10 +250,42 @@ function SearchForm() {
 /* KARTU DESTINASI */
 
 function DestinationCard({ item }) {
+  const videoRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
   return (
-    <Link to={`/wisata/${item.id}`} className="destination-card">
+    <Link
+      to={`/wisata/${item.id}`}
+      className="destination-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="destination-image">
         <img src={item.image} alt={item.name} loading="lazy" />
+        {item.video && (
+          <video
+            ref={videoRef}
+            src={item.video}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="destination-video"
+          />
+        )}
         <span className="destination-category">
           {getCategoryName(item.category)}
         </span>
