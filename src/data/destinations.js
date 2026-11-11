@@ -22,7 +22,7 @@ export const categories = [
     id: "budaya-religi",
     name: "Budaya & Religi",
     image:
-      "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=1000",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-QaciKjPZG5psv9guvp1ACkARlrRFHX6vZwFsU0dIw&s=10",
   },
 ];
 
@@ -55,6 +55,7 @@ export const destinations = [
     location: "Mandalika, Lombok Tengah, NTB",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh88M18Ni626kbwExSMLUYILGBlvPgbtxeZfWiNL_C1JbalzQgsraEZbPo&s=10",
+    youtube: "https://www.youtube.com/watch?v=F_f0iW4z-K8",
     description:
       "Pantai Tanjung Aan terkenal dengan pasir putih, air laut berwarna biru kehijauan, dan garis pantai yang luas. Kawasan ini menjadi salah satu tujuan wisata favorit di selatan Lombok.",
     ticket: "Estimasi Rp10.000",

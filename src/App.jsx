@@ -937,11 +937,15 @@ function Contact() {
 }
 
 /* HELPER YOUTUBE ID */
-function getYouTubeId(url) {
-  if (!url) return null;
-  const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-  const match = url.match(regExp);
-  return match ? match[1] : (url.length === 11 ? url : null);
+function getYouTubeId(input) {
+  if (!input) return null;
+  const str = String(input).trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(str)) {
+    return str;
+  }
+  const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const match = str.match(regExp);
+  return match ? match[1] : null;
 }
 
 /* DETAIL DESTINASI */
